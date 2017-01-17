@@ -96,7 +96,7 @@ public class Model {
 			logger.info("**** Region {} ***** ", reg);
 			List<Integer> labs = Query.getLabs(con, reg);
 			logger.info("     Num.Labs {}", labs.size());
-			List<String> dates = Query.getDiagnosisDates(con, reg);
+			List<String> dates = Query.getScreeningDates(con, reg);
 			logger.info("     Num.Dates {}", dates.size());
 			Query.getImprovement(con, reg, dates, labs);
 

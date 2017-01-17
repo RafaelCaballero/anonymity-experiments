@@ -42,7 +42,7 @@ public class Controller implements ActionListener, MouseListener {
 		this.view = view;
 		this.mod = mod;
 		this.debugging = false;
-		logger.info("Application started");
+		logger.info("Anonymity Application started. V2.0");
 	}
 
 	@Override

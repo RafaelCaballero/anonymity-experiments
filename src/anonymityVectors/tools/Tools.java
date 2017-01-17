@@ -100,6 +100,7 @@ public class Tools {
 		return result;
 	}
 
+
 	public static int getK(int v[]) {
 		int k = 1;
 		while (k != v.length && v[k - 1] == 0)

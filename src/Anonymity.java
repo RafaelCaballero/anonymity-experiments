@@ -351,8 +351,8 @@ public class Anonymity {
 	}
 
 	public static void cr_1() {
-		// \copy (select count(*), ',' from cr_data where
-		// diagnosisdate='15.01.1992' group by year,reg order by year, reg) to
+		// \copy (select count(*), ',' from data where
+		// screening_date='15.01.1992' group by year,reg order by year, reg) to
 		// '/media/rafael/OS/rafa/investigacion/articulos/ijmi/15.01.1992.txt' ;
 		// total regs 4541
 		int[] q = { 2, 1, 1, 3, 2, 2, 2, 1, 3, 1, 1, 4, 1, 1, 3, 1, 1, 9, 2, 2, 1, 2, 1, 2, 1, 3, 11, 2, 2, 14, 6, 3, 1,
@@ -396,8 +396,8 @@ public class Anonymity {
 				3, 31, 3, 7, 6, 2, 1, 1, 2, 1, 11, 4, 3, 2, 1, 12, 3, 1, 11, 1, 7, 3, 16, 1, 1, 4, 5, 3, 2, 14, 1, 13,
 				7, 3, 9, 6, 3, 23, 4, 3, 3, 3, 3, 2, 4, 2, 1, 1, 2 };
 
-		// select count(*) from cr_data where reg=1 and
-		// diagnosisdate='15.01.1992' group by year order by year
+		// select count(*) from data where reg=1 and
+		// screening_date='15.01.1992' group by year order by year
 		// for (int i=0; i<q.length; i++) System.out.print(qr[i]+", ");
 		// System.out.println();
 		checkcr(q, qr, 21);
@@ -427,6 +427,7 @@ public class Anonymity {
 	}
 
 	public static void test(String[] args) {
+		System.out.println("version 2.0"); 
 		cr_1();
 		/*
 		 * checkRandom(20,1); checkGreedy(20,1); checkChoco(20,1);

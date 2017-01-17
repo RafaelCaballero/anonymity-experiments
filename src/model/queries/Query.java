@@ -45,15 +45,15 @@ public class Query {
 
 	public static String GETSEARCHPATH = "SHOW search_path";
 
-	public static String GETREGIONS = "select distinct reg from cr_data order by reg";
-	public static String GETLABS = "select distinct lab_nr from cr_data where reg=? order by lab_nr";
-	public static String GETDATES = "select distinct diagnosisdate from cr_data where reg=?  order by diagnosisdate";
+	public static String GETREGIONS = "select distinct reg from data order by reg";
+	public static String GETLABS = "select distinct center_nr from data where reg=? order by center_nr";
+	public static String GETDATES = "select distinct screening_date from data where reg=?  order by screening_date";
 	// Q, using year as quasi-id
-	public static String GETQ = "select count(*) from cr_data where reg=? and diagnosisdate=? group by year order by year";
-	// QR, using year and lab_nr as quasi_id
-	public static String GETQR = "select count(*) from cr_data where reg=? and diagnosisdate=? group by year,lab_nr order by year,lab_nr";
+	public static String GETQ = "select count(*) from data where reg=? and screening_date=? group by year order by year";
+	// QR, using year and center_nr as quasi_id
+	public static String GETQR = "select count(*) from data where reg=? and screening_date=? group by year,center_nr order by year,center_nr";
 	// max capacity of a laboratoty
-	public static String GETCAPACITY = "select count(*) from cr_data where reg=? and diagnosisdate=? and lab_nr=?";
+	public static String GETCAPACITY = "select count(*) from data where reg=? and screening_date=? and center_nr=?";
 
 	/**
 	 * Obtains a list of user defined views
@@ -199,7 +199,7 @@ public class Query {
 
 	}
 
-	public static List<String> getDiagnosisDates(Connection conn, Integer reg) {
+	public static List<String> getScreeningDates(Connection conn, Integer reg) {
 		List<String> la = null;
 		if (conn != null) {
 			la = new ArrayList<String>();
@@ -376,7 +376,8 @@ public class Query {
 		BigInteger ir = pq.index(vr);
 		BigInteger ig = pq.index(vgreedy);
 		BigInteger impgr = Tools.improvement(ig, ir, ibase, 1);
-		// System.out.println("improvement: " + impgr.floatValue()/10.0);
+		//BigInteger impPop = Tools.improvementPopulation(ig, ir);
+		//System.out.println("improvement Population: " + impPop);
 
 		return impgr.floatValue() / 10.0;
 
